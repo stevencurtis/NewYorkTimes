@@ -180,6 +180,7 @@
 				CA0A485F227ED13C0070CE95 /* CollectionViewCells */,
 				CA0A485D227ED0FB0070CE95 /* Others */,
 				CA07FF5922768AC0004759BE /* Assets.xcassets */,
+				CA07FF5E22768AC0004759BE /* Info.plist */,
 				CA69F49D227852C500FC5845 /* Extensions */,
 				CA07FF902276A2C0004759BE /* Constants */,
 				CA07FF8F2276A2B1004759BE /* Models */,
@@ -289,7 +290,6 @@
 			children = (
 				CA07FF5222768ABD004759BE /* AppDelegate.swift */,
 				CA0B70B4227D4D4F00CED7C1 /* RecentKeywords.swift */,
-				CA07FF5E22768AC0004759BE /* Info.plist */,
 			);
 			path = Others;
 			sourceTree = "<group>";
