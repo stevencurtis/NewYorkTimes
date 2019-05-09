@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public protocol HomeViewModelProtocol {
     func retrieveImage(imgURL: String, completion: @escaping (Result<Data, Error>) -> Void)
     func fetchMore(completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)?)

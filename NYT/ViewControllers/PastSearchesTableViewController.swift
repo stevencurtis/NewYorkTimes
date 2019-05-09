@@ -42,6 +42,8 @@ class PastSearchesTableViewController: UITableViewController {
     
     func removeLoading() {
         dimmingView?.removeFromSuperview()
+        self.view.isHidden = true
+
     }
     
     /// process the error message for the UI
@@ -85,16 +87,19 @@ class PastSearchesTableViewController: UITableViewController {
                 guard let self = self else {return}
                 
                 switch result {
-                case .success : break
+                case .success :
+                    self.removeLoading()
+                    break
                 case .failure(let error):
                     let custerr = error as NSError
                     let notifMess = self.processError(custerr.code)
                     self.showNotification(title: notifMess.title, message: notifMess.message)
+                    self.removeLoading()
                 }
-                
-                self.removeLoading()
                 self.tableView.deselectRow(at: indexPath, animated: false)
-                self.view.isHidden = true
+
+                
+
             }
         }
     }
@@ -124,15 +129,16 @@ extension PastSearchesTableViewController: UISearchBarDelegate {
             viewModel.fetchArticle(searchTerms: search) {[weak self] result in
                 guard let self = self else {return}
                 switch result {
-                case .success: break
+                case .success:
+                    self.removeLoading()
+                    break
                 case .failure(let error):
                     let custerr = error as NSError
                     let notifMess = self.processError(custerr.code)
                     self.showNotification(title: notifMess.title, message: notifMess.message)
+                    self.removeLoading()
                 }
                 
-                self.removeLoading()
-                self.view.isHidden = true
             }
         }
         
