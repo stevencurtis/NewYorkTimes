@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NYTTests/MultimediaTest.swift"
-            timestampString = "578735120.395095"
+            timestampString = "578977396.885039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -25,60 +25,60 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYT/Networking/DataManager.swift"
-            timestampString = "578736247.595593"
+            filePath = "NYT/View Model/HomesViewController.swift"
+            timestampString = "578964242.551282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "init()"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYT/Networking/DataManager.swift"
-            timestampString = "578736247.596311"
+            filePath = "NYT/View Model/HomesViewController.swift"
+            timestampString = "578964242.551342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "fetchArticles(withAPI:refresh:completion:)"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in NYT.DataManager.fetchArticles(withAPI: NYT.API, refresh: Swift.Bool, completion: (Swift.Result&lt;(content: Swift.Array&lt;NYT.DisplayContent&gt;, metadata: NYT.DisplayContentMetaData), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in NYT.HomesViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "NYT"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYT/NYT/Networking/DataManager.swift"
-                  timestampString = "578737455.648837"
+                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYT/NYT/View%20Model/HomesViewController.swift"
+                  timestampString = "578911273.693179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "543">
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "289">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in NYT.DataManager.fetchArticles(withAPI: NYT.API, refresh: Swift.Bool, completion: (Swift.Result&lt;(content: Swift.Array&lt;NYT.DisplayContent&gt;, metadata: NYT.DisplayContentMetaData), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in NYT.HomesViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
                   moduleName = "NYT"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYT/NYT/Networking/DataManager.swift"
-                  timestampString = "578737455.65209"
+                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYT/NYT/View%20Model/HomesViewController.swift"
+                  timestampString = "578911273.695435"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "550">
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "293">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -89,13 +89,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYT/Networking/DataManager.swift"
-            timestampString = "578736247.596902"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.79851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "init(httpManager:)"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "prepBeforeAfterArticles(index:articles:VC:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYTTests/Mocks/HomeViewModelMock.swift"
+            timestampString = "579679624.0159889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "setNumberMetaData(hits:page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +121,125 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYT/Networking/DataManager.swift"
-            timestampString = "578736247.597438"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.8016779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "init()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setup(requiredInit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.803322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "setup(requiredInit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.8047431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setup(requiredInit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.806677"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "setup(requiredInit:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.809032"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "setup(requiredInit:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 ((Swift.Optional&lt;Swift.Array&lt;NYT.DisplayContent&gt;&gt;, Swift.Optional&lt;NYT.DisplayContentMetaData&gt;)) -&gt; () in NYT.HomeViewController.setup(requiredInit: Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()"
+                  moduleName = "NYT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYTMVVM/NYT/ViewControllers/HomeViewController.swift"
+                  timestampString = "579684268.069158"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "259">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 ((Swift.Optional&lt;Swift.Array&lt;NYT.DisplayContent&gt;&gt;, Swift.Optional&lt;NYT.DisplayContentMetaData&gt;)) -&gt; () in NYT.HomeViewController.setup(requiredInit: Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()"
+                  moduleName = "NYT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stevencurtis/Documents/Jobs2016/Developer/PropertyGuru/NYTMVVM/NYT/ViewControllers/HomeViewController.swift"
+                  timestampString = "579684268.074134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "89">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYT/ViewControllers/HomeViewController.swift"
+            timestampString = "579685293.810614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "prepBeforeAfterArticles(index:articles:VC:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

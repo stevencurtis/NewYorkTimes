@@ -14,7 +14,7 @@ public enum API {
     
     func pageQuery() -> [URLQueryItem] {
         switch self {
-        case .getContents(let idx, let sze) : return [URLQueryItem(name: "limit", value: "\(sze ?? pageSize)"), URLQueryItem(name: "offset", value: "\(idx ?? pageIndex * (sze ?? pageSize) )")]
+        case .getContents(let idx, let sze) : return [URLQueryItem(name: "limit", value: "\(sze ?? pageSize)"), URLQueryItem(name: "offset", value: "\( (idx ?? pageIndex) * (sze ?? pageSize) )")]
         case .searchArticles(let query, let idx) : return [URLQueryItem(name: "q", value: query), URLQueryItem(name: "page", value: "\(idx ?? pageIndex)")]
         }
     }

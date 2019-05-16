@@ -11,22 +11,28 @@ import XCTest
 
 class ArticleCollectionViewCellTest: XCTestCase {
 
-    
-    var cell : ArticleCollectionViewCell!
-    
+    var cell : ArticleCollectionViewCell!    
+    let dc = DisplayContent(title: "test", abstract: "abs", thumbnailImageString: "tbstr", date: "data", image: "imgStr")
+
     override func setUp() {
         super.setUp()
         let bundle = Bundle(for: ArticleCollectionViewCell.self)
         cell = (bundle.loadNibNamed("ArticleCollectionViewCell", owner: nil)!.first as! ArticleCollectionViewCell)
+                cell.configure(with: dc)
     }
     
-    func testCell(){
-        
-        let dc = DisplayContent(title: "test", abstract: "abs", thumbnailImageString: "tbstr", date: "data", image: "imgStr")
-        
-        cell.configure(with: dc)
-        XCTAssertEqual(cell.titleLabel.text, dc.title)
+    func testCellTitle(){
         XCTAssertEqual(cell.dateLabel.text, dc.date)
+    }
+    
+    func testCellDate(){
+        XCTAssertEqual(cell.titleLabel.text, dc.title)
+    }
+
+    
+    func testCellRemove(){
+        cell.clearAll()
+        XCTAssertEqual(cell.titleLabel.text, "")
     }
 
 }

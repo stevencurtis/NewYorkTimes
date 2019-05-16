@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-// do the date here
-
 public struct Article : Codable {
     var abstract: String?
     var thumbnail_standard: String?
@@ -58,3 +55,4 @@ public struct Article : Codable {
         return formatter
     }()
 }
+

@@ -11,16 +11,14 @@ import Foundation
 public protocol HTTPManagerProtocol {
     func get(urlString: String, completionBlock: @escaping (Result<Data, Error>) -> Void)
     func get(url: URL, completionBlock: @escaping (Result<Data, Error>) -> Void)
-    func returnShared () -> HTTPManagerProtocol
 }
 
 class HTTPManager {
-    static let shared: HTTPManager = HTTPManager()
-    
-    public func returnShared () -> HTTPManagerProtocol {
-        return HTTPManager.shared
+
+    init(session: URLSessionProtocol) {
+        self.session = session
     }
-    
+
     enum HTTPError: Error {
         case invalidURL
         case noInternet
@@ -42,35 +40,40 @@ class HTTPManager {
                 }
             }
         }
-
+        
     }
-
-
-public func get(url: URL, completionBlock: @escaping (Result<Data, Error>) -> Void) {
     
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        guard error == nil else {
-
-            completionBlock(.failure(error!))
-            return
-        }
+    fileprivate let session: URLSessionProtocol
+    
+    public func get(url: URL, completionBlock: @escaping (Result<Data, Error>) -> Void) {
         
-        guard
-            let responseData = data,
-            let httpResponse = response as? HTTPURLResponse,
-            200 ..< 300 ~= httpResponse.statusCode else {
-                completionBlock(.failure(HTTPError.invalidResponse(data, response)))
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                completionBlock(.failure(error!))
                 return
+            }
+            
+            guard
+                let responseData = data,
+                let httpResponse = response as? HTTPURLResponse,
+                200 ..< 300 ~= httpResponse.statusCode else {
+                    completionBlock(.failure(HTTPError.invalidResponse(data, response)))
+                    return
+            }
+            
+            completionBlock(.success(responseData))
         }
-        
-        completionBlock(.success(responseData))
+        task.resume()
     }
-    task.resume()
-}
 }
 
+protocol URLSessionProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
 
+extension URLSession: URLSessionProtocol {}
 
-
-extension HTTPManager : HTTPManagerProtocol {}
+extension HTTPManager : HTTPManagerProtocol {
+}
 

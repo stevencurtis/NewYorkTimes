@@ -16,14 +16,12 @@ class ConstantsApiTest: XCTestCase {
 
     func testContentsPath(){
         let res = path(api: API.getContents(pageIndex: nil, pageSize: nil) )
-        XCTAssertEqual(res, "/svc/news/v3/content/all/all.json")
+        XCTAssertEqual(res, apiv3)
     }
     
     func testSearchPath(){
         let res = path(api: API.searchArticles(query: "Election", pageIndex: 1))
-        
-        XCTAssertEqual(res, "/svc/search/v2/articlesearch.json")
+        XCTAssertEqual(res, apiv2)
     }
-    
     
 }

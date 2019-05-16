@@ -15,6 +15,11 @@ class MultimediaTest: XCTestCase {
     var mm: Data?
     var mmerror: Data?
     
+    override func setUp() {
+        mm = Data(multimediaString.utf8)
+        mmerror = Data(multimediaErrorString.utf8)
+    }
+    
     func testMultimedia() {
         let decoded = try! JSONDecoder().decode(Multimedia.self, from: mm!)
         XCTAssertEqual( decoded.url , "https://static01.nyt.com/images/2019/04/19/world/30dc-emoluments/30dc-emoluments-mediumThreeByTwo440.jpg")
@@ -31,31 +36,12 @@ class MultimediaTest: XCTestCase {
         }
     }
     
-    
-    override func setUp() {
-        let mmString = """
-        {
-          "url": "https://static01.nyt.com/images/2019/04/19/world/30dc-emoluments/30dc-emoluments-mediumThreeByTwo440.jpg",
-          "format": "mediumThreeByTwo440",
-          "height": 293,
-          "width": 440,
-          "type": "image",
-          "subtype": "photo",
-          "caption": "The Trump International Hotel in Washington.",
-          "copyright": "Gabriella Demczuk for The New York Times"
-        }
-"""
-        mm = Data(mmString.utf8)
-        
-        
-        let mmErrorString = """
-        {
-                      "junk:
-        }
-"""
-        mmerror = Data(mmErrorString.utf8)
-        
+    func testMultimediaEauality() {
+        let decoded = try! JSONDecoder().decode(Multimedia.self, from: mm!)
+        XCTAssertEqual( decoded == decoded , true)
     }
+
+
     
     
     

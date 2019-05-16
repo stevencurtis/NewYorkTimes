@@ -14,10 +14,10 @@ var savedSearches = 10
 
 let pageSize : UInt = 10
 let pageIndex : UInt = 0
-// test change
+
 public class APIKeys {
     // Insert API Key here
-    static let APIKey = "<Your API Key>"
+    static let APIKey = "tN3lr7Uvgd2CSnTAGlgpNkrupQWpEESn" 
 }
 
 func path(api: API) -> String {

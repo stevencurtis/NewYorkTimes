@@ -8,6 +8,12 @@
 
 import UIKit
 
+public protocol DetailsViewControllerProtocol {
+    var contents : DisplayContent? { get set }
+    var leftContents : DisplayContent? { get set }
+    var rightContents : DisplayContent? { get set }
+}
+
 final class DetailsViewController: UIViewController, UIPageViewControllerDataSource {
     
     var contents : DisplayContent?
@@ -20,31 +26,35 @@ final class DetailsViewController: UIViewController, UIPageViewControllerDataSou
     fileprivate var rightVC: DisplayDetailsViewController!
     fileprivate var midVC: DisplayDetailsViewController!
     
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let currentIndex = pages.firstIndex(of: viewController)!
+        guard let currentIndex = pages.firstIndex(of: viewController) else {return nil}
         if currentIndex == 0 || (currentIndex == 1 && leftContents == nil)  {return nil}
         let previousIndex = abs((currentIndex - 1) % pages.count)
         return pages[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let currentIndex = pages.firstIndex(of: viewController)!
-        if currentIndex == 2 || (currentIndex == 2 && rightContents == nil)  {return nil}
+        guard let currentIndex = pages.firstIndex(of: viewController) else {return nil}
+        if currentIndex == 2 || (currentIndex == 2 && rightContents == nil) {return nil}
         let nextIndex = abs((currentIndex + 1) % pages.count)
         return pages[nextIndex]
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        pageVC = (storyboard!.instantiateViewController(withIdentifier: "DetailsPageViewController") as! UIPageViewController)
-        leftVC = (storyboard!.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as! DisplayDetailsViewController)
-        rightVC = (storyboard!.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as! DisplayDetailsViewController)
         
-        midVC = (storyboard!.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as! DisplayDetailsViewController)
+        guard let storyboard = storyboard else {return}
+        
+        pageVC = (storyboard.instantiateViewController(withIdentifier: "DetailsPageViewController") as? UIPageViewController)
+        leftVC = (storyboard.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as? DisplayDetailsViewController)
+        rightVC = (storyboard.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as? DisplayDetailsViewController)
+        midVC = (storyboard.instantiateViewController(withIdentifier: "DisplayDetailsViewController") as? DisplayDetailsViewController)
+        
         midVC.contents = contents
         leftVC.contents = leftContents
         rightVC.contents = rightContents
+        
         pages.insert(leftVC, at: 0)
         pages.insert(midVC, at: 1)
         pages.insert(rightVC, at: 2)
@@ -57,3 +67,5 @@ final class DetailsViewController: UIViewController, UIPageViewControllerDataSou
         
     }
 }
+
+extension DetailsViewController: DetailsViewControllerProtocol {}

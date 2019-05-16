@@ -8,12 +8,10 @@
 
 import Foundation
 
-
 public struct SearchHeadline : Codable {
     var main : String?
     
     private enum CodingKeys: String, CodingKey {
         case main = "main"
     }
-
 }

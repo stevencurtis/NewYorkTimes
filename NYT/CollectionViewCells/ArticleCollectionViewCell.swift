@@ -21,11 +21,25 @@ class ArticleCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    public func configure(with content: DisplayContent ) {
+    func clearAll(){
+        activityIndicator.stopAnimating()
+        spacer.backgroundColor = .clear
+        titleLabel.text = ""
+        snippetLabel.text = ""
+        dateLabel.text = ""
+        imageView.isHidden = true
+    }
+    
+    public func configure(with content: DisplayContent? ) {
+        guard let content = content else {clearAll(); return}
         activityIndicator.stopAnimating()
         spacer.backgroundColor = .lightGray
         titleLabel.text = content.title
-        snippetLabel.text = content.abstract
+        if let abstract = content.abstract{
+            snippetLabel.text = abstract.trunc(length: 150)
+        } else {
+            snippetLabel.text = nil
+        }
         dateLabel.text = content.date
         if content.image == nil {
             imageView.isHidden = true
@@ -33,6 +47,5 @@ class ArticleCollectionViewCell: UICollectionViewCell {
             imageView.isHidden = false
         }
     }
-
 
 }

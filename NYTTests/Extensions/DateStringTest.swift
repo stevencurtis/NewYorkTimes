@@ -11,11 +11,9 @@ import XCTest
 
 class DateStringTest: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    override func setUp() { }
     
-    func testDate() {
+    func testSimpleDate() {
         var components = DateComponents()
         components.year = 2019
         components.month = 12

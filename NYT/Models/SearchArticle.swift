@@ -15,19 +15,19 @@ public struct SearchArticle : Codable {
     var snippet: String?
     var headline: SearchHeadline?
     
+    var published_date: Date? { return SearchArticle.dateOnlyFormatter.date(from: pub_date ?? "2019-04-25T15:00:10+0000") }
+    
     private enum CodingKeys: String, CodingKey {
         case multimedia = "multimedia"
         case web_url = "web_url"
         case pub_date = "pub_date"
         case snippet = "snippet"
         case headline = "headline"
-        
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         web_url = try container.decode(String.self, forKey: .web_url)
-        
         if let pub = try? container.decode(String.self, forKey: .pub_date) {
             pub_date = pub
         } else {

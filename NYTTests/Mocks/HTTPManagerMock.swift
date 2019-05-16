@@ -9,26 +9,17 @@
 import XCTest
 @testable import NYT
 
-
-class MockHTTPManager: HTTPManagerProtocol {
+class HTTPManagerMock: HTTPManagerProtocol {
     
     func get(urlString: String, completionBlock: @escaping (Result<Data, Error>) -> Void) {
         let data = Data(contentString.utf8)
-
         completionBlock(.success(data))
-
     }
     
     func get(url: URL, completionBlock: @escaping (Result<Data, Error>) -> Void) {
         let data = Data(contentString.utf8)
         completionBlock(.success(data))
-
     }
-    
-    func returnShared() -> HTTPManagerProtocol {
-        return MockHTTPManager.shared
-    }
-    static let shared: MockHTTPManager = MockHTTPManager()
 }
 
 class MockHTTPManagerImage: HTTPManagerProtocol {
@@ -44,11 +35,7 @@ class MockHTTPManagerImage: HTTPManagerProtocol {
         let data = localImage!.pngData()
         completionBlock(.success(data!))
     }
-    
-    func returnShared() -> HTTPManagerProtocol {
-        return MockHTTPManagerImage.shared
-    }
-    static let shared: MockHTTPManagerImage = MockHTTPManagerImage()
+
 }
 
 class MockHTTPManagerSearch: HTTPManagerProtocol {
@@ -62,13 +49,7 @@ class MockHTTPManagerSearch: HTTPManagerProtocol {
     func get(url: URL, completionBlock: @escaping (Result<Data, Error>) -> Void) {
         let data = Data(searchResultsString.utf8)
         completionBlock(.success(data))
-        
     }
-    
-    func returnShared() -> HTTPManagerProtocol {
-        return MockHTTPManagerSearch.shared
-    }
-    static let shared: MockHTTPManagerSearch = MockHTTPManagerSearch()
 }
 
 enum CustomError: String, Error {

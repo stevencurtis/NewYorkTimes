@@ -17,7 +17,6 @@ public struct DisplayContent {
     var image: String?
 }
 
-
 extension DisplayContent: Equatable {
     public static func == (lhs: DisplayContent, rhs: DisplayContent) -> Bool {
         return lhs.title == rhs.title

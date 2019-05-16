@@ -1149,3 +1149,24 @@ let articleMultimediaString = """
 "multimedia": ""
 }
 """
+
+
+
+let multimediaString = """
+{
+"url": "https://static01.nyt.com/images/2019/04/19/world/30dc-emoluments/30dc-emoluments-mediumThreeByTwo440.jpg",
+"format": "mediumThreeByTwo440",
+"height": 293,
+"width": 440,
+"type": "image",
+"subtype": "photo",
+"caption": "The Trump International Hotel in Washington.",
+"copyright": "Gabriella Demczuk for The New York Times"
+}
+"""
+
+let multimediaErrorString = """
+{
+"junk:
+}
+"""
