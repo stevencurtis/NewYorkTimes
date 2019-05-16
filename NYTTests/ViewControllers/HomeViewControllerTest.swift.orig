@@ -1,0 +1,172 @@
+//
+//  HomeViewControllerTest.swift
+//  NYTTests
+//
+//  Created by Steven Curtis on 05/05/2019.
+//  Copyright © 2019 Steven Curtis. All rights reserved.
+//
+
+import XCTest
+@testable import NYT
+
+class HomeViewControllerTest: XCTestCase {
+    
+<<<<<<< HEAD
+    var homeVCNib: HomeViewController!
+    var homeViewModel : HVMock?
+    var dataManager : DMMock?
+    
+    let twoArticles = [singleDisplayContent, doubleDisplayContent]
+    let threeArticles = [singleDisplayContent, doubleDisplayContent, tripleDisplayContent]
+    
+    override func setUp() {
+        dataManager = DataManagerMock()
+    }
+    
+    func setupContent(with displayContent: [DisplayContent]? = nil){
+        if let dc = displayContent {
+            dataManager?.setArticles(displayContent: dc)
+        }
+        let homeViewModelBuilderMock = HomeViewModelBuilderMock(dataManager: dataManager)
+        homeVCNib = HomeViewController(hvm: homeViewModelBuilderMock)
+    }
+    
+    func testPrepBeforeAfterThreeRight(){
+        setupContent(with: threeArticles)
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        
+        homeVCNib!.prepBeforeAfterArticles(index: 1, articles: threeArticles, VC: &mockDV)
+        XCTAssertEqual(mockDV.rightContents, tripleDisplayContent)
+    }
+    
+    func testPrepBeforeAfterTwoLeft(){
+        setupContent(with: twoArticles)
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        
+        homeVCNib!.prepBeforeAfterArticles(index: 1, articles: twoArticles, VC: &mockDV)
+=======
+    var homeVC: HomeViewController?
+    var homeVCNib: HomeViewController!
+    
+    var homeViewModel : HVMock?
+    var dataManager : DMMock?
+    
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+        dataManager = DataManagerMock()
+        homeViewModel = HomeViewModelMock(dataManager: dataManager!)
+        
+        homeVC = HomeViewController()
+        homeVC!.viewModel = homeViewModel!
+        
+        homeVCNib = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "home") as! HomeViewController)
+        homeVCNib.viewModel = homeViewModel!
+    }
+    
+    func testProcessInternetMessageError(){
+        let mess = homeVC!.processError(-1009)
+        XCTAssertEqual(mess.message, "The Internet appears to be offline")
+    }
+    
+    func testProcessInternetTitleError(){
+        let mess = homeVC!.processError(-1009)
+        XCTAssertEqual(mess.title, "Connection error")
+    }
+    
+    func testProcessGeneralMessageError(){
+        let mess = homeVC!.processError(-100)
+        XCTAssertEqual(mess.message, "An error has occured")
+    }
+    
+    func testProcessGeneralTitleError(){
+        let mess = homeVC!.processError(-100)
+        XCTAssertEqual(mess.title, "Error")
+    }
+    
+    func testPrepBeforeAfterTwoLeft(){
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVC!.prepBeforeAfterArticles(index: 1, articles: [singleDisplayContent, doubleDisplayContent], VC: &mockDV)
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+        XCTAssertEqual(mockDV.leftContents, singleDisplayContent)
+    }
+    
+    func testPrepBeforeAfterTwoContents(){
+<<<<<<< HEAD
+        setupContent(with: twoArticles)
+
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVCNib!.prepBeforeAfterArticles(index: 1, articles: twoArticles, VC: &mockDV)
+        XCTAssertEqual(mockDV.contents, doubleDisplayContent)
+    }
+    
+    func testPrepBeforeAfterthreeLeft(){
+        setupContent(with: threeArticles)
+
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVCNib!.prepBeforeAfterArticles(index: 1, articles: threeArticles, VC: &mockDV)
+        XCTAssertEqual(mockDV.leftContents, singleDisplayContent)
+    }
+    
+    func testPrepBeforeAfterThreeContents(){
+        setupContent(with: threeArticles)
+
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVCNib!.prepBeforeAfterArticles(index: 1, articles: threeArticles, VC: &mockDV)
+        XCTAssertEqual(mockDV.contents, doubleDisplayContent)
+    }
+    
+    func testProcessInternetMessageError(){
+        setupContent()
+        
+        let mess = homeVCNib?.processError(-1009)
+        XCTAssertEqual(mess?.message, "The Internet appears to be offline")
+    }
+    
+    func testProcessInternetTitleError(){
+        setupContent()
+
+        let mess = homeVCNib?.processError(-1009)
+        XCTAssertEqual(mess?.title, "Connection error")
+    }
+    
+    func testProcessGeneralMessageError(){
+        setupContent()
+
+        let mess = homeVCNib?.processError(-100)
+        XCTAssertEqual(mess?.message, "An error has occured")
+    }
+    
+    func testProcessGeneralTitleError(){
+        setupContent()
+
+        let mess = homeVCNib?.processError(-100)
+        XCTAssertEqual(mess?.title, "Error")
+=======
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVC!.prepBeforeAfterArticles(index: 1, articles: [singleDisplayContent, doubleDisplayContent], VC: &mockDV)
+        XCTAssertEqual(mockDV.contents, doubleDisplayContent)
+    }
+    
+    
+    func testPrepBeforeAfterthreeLeft(){
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVC!.prepBeforeAfterArticles(index: 1, articles: [singleDisplayContent, doubleDisplayContent, tripleDisplayContent], VC: &mockDV)
+        XCTAssertEqual(mockDV.leftContents, singleDisplayContent)
+    }
+    
+    
+    func testPrepBeforeAfterThreeContents(){
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVC!.prepBeforeAfterArticles(index: 1, articles: [singleDisplayContent, doubleDisplayContent, tripleDisplayContent], VC: &mockDV)
+        XCTAssertEqual(mockDV.contents, doubleDisplayContent)
+    }
+    
+    func testPrepBeforeAfterThreeRight(){
+        homeViewModel!.setNumberMetaData(hits: 3, page: 0)
+        var mockDV: DetailsViewControllerProtocol = DetailsViewControllerMock()
+        homeVC!.prepBeforeAfterArticles(index: 1, articles: [singleDisplayContent, doubleDisplayContent, tripleDisplayContent], VC: &mockDV)
+        XCTAssertEqual(mockDV.rightContents, tripleDisplayContent)
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    }
+
+}

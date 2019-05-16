@@ -94,6 +94,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA078058228D39AE003DFAA9 /* HomeViewModelBuilderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelBuilderMock.swift; sourceTree = "<group>"; };
 		CA07FF4F22768ABD004759BE /* NYT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA07FF5222768ABD004759BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA07FF5722768ABD004759BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -193,6 +194,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA078055228D2BE5003DFAA9 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				CA0A4840227E6C050070CE95 /* RecentKeywordsTest.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		CA078056228D3914003DFAA9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA0BA9432282BBAB0054C572 /* DetailsViewControllerMock.swift */,
+				CA0BA94D2282D0710054C572 /* UIPageViewControllerMock.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA078057228D3932003DFAA9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA1059F322830D1D001ABEEF /* PastSearchViewModelMock.swift */,
+				CA0BA93F2282ACAD0054C572 /* HomeViewModelMock.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CA07805A228D39B3003DFAA9 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CA078058228D39AE003DFAA9 /* HomeViewModelBuilderMock.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		CA07FF4622768ABD004759BE = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +272,7 @@
 				CAFA019F2283A931004CC548 /* ViewModels */,
 				CAFA019E2283A91C004CC548 /* ViewControllers */,
 				CAFA01A42283BDB6004CC548 /* Data */,
+				CA078055228D2BE5003DFAA9 /* Others */,
 				CA0A4842227E6C0E0070CE95 /* Mocks */,
 				CA0A4855227E9F8F0070CE95 /* Resources */,
 				CA0BA93A22827F7A0054C572 /* Models */,
@@ -296,17 +332,15 @@
 		CA0A4842227E6C0E0070CE95 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				CA0BA9432282BBAB0054C572 /* DetailsViewControllerMock.swift */,
 				CA0B70C3227D951500CED7C1 /* HTTPManagerMock.swift */,
-				CA0BA9492282C7B90054C572 /* RecentKeywordsMock.swift */,
 				CA0BA9452282C3BB0054C572 /* URLSessionMock.swift */,
-				CA0B70C5227D96B100CED7C1 /* DataManagerMock.swift */,
-				CA0BA93F2282ACAD0054C572 /* HomeViewModelMock.swift */,
-				CA1059F322830D1D001ABEEF /* PastSearchViewModelMock.swift */,
-				CA0A4840227E6C050070CE95 /* RecentKeywordsTest.swift */,
+				CA07805A228D39B3003DFAA9 /* Builder */,
 				CA0A484F227E95B70070CE95 /* ConstantsApiTest.swift */,
 				CA0B70BE227D8CE600CED7C1 /* ArticleCollectionViewCellTest.swift */,
-				CA0BA94D2282D0710054C572 /* UIPageViewControllerMock.swift */,
+				CA0B70C5227D96B100CED7C1 /* DataManagerMock.swift */,
+				CA078056228D3914003DFAA9 /* ViewController */,
+				CA0BA9492282C7B90054C572 /* RecentKeywordsMock.swift */,
+				CA078057228D3932003DFAA9 /* ViewModel */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -385,19 +419,19 @@
 				CA0EFD082280207300F6E842 /* HomeViewModel.swift */,
 				CA0BA92C22824D9E0054C572 /* DisplayDetailsViewModel.swift */,
 				CA1020C9228126D6005EC2C0 /* PastSearchViewModel.swift */,
-				CA0EFD0D2280277300F6E842 /* Factory */,
+				CA0EFD0D2280277300F6E842 /* Builder */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
 		};
-		CA0EFD0D2280277300F6E842 /* Factory */ = {
+		CA0EFD0D2280277300F6E842 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
 				CA0EFD0B228025BA00F6E842 /* HomeViewModelBuilder.swift */,
-				CA0BA92E228251410054C572 /* DisplayDetailsModelBuilder.swift */,
 				CA0BA92A22824A950054C572 /* PastSearchViewModelBuilder.swift */,
+				CA0BA92E228251410054C572 /* DisplayDetailsModelBuilder.swift */,
 			);
-			path = Factory;
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		CA69F49D227852C500FC5845 /* Extensions */ = {
@@ -621,6 +655,7 @@
 				CA0B70C6227D96B100CED7C1 /* DataManagerMock.swift in Sources */,
 				CA0BA9482282C68A0054C572 /* PastSearchViewModelTest.swift in Sources */,
 				CAFA01A32283B620004CC548 /* DisplayDetailsViewModelTest.swift in Sources */,
+				CA078059228D39AE003DFAA9 /* HomeViewModelBuilderMock.swift in Sources */,
 				CA0A484A227E813C0070CE95 /* HomeViewControllerTest.swift in Sources */,
 				CA0B70C4227D951500CED7C1 /* HTTPManagerMock.swift in Sources */,
 				CA0A4850227E95B70070CE95 /* ConstantsApiTest.swift in Sources */,

@@ -1,0 +1,126 @@
+//
+//  HomeViewModel.swift
+//  NYT
+//
+//  Created by Steven Curtis on 06/05/2019.
+//  Copyright © 2019 Steven Curtis. All rights reserved.
+//
+
+import Foundation
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+public protocol HomeViewModelProtocol {
+    func retrieveImage(imgURL: String, completion: @escaping (Result<Data, Error>) -> Void)
+    func fetchMore(completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)?)
+    func fetchArticle(refresh: Bool?, completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)?)
+    var articlesDidChange: ((([DisplayContent]?, DisplayContentMetaData?)) -> Void)? { get set }
+    var articles : [DisplayContent]? { get }
+    var metaData : DisplayContentMetaData? { get }
+}
+
+<<<<<<< HEAD
+public class HomeViewModel {
+=======
+class HomeViewModel {
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    // MARK: - Properties
+    
+    private var dataManagerClass: DataManagerProtocol
+
+<<<<<<< HEAD
+    public var articles : [DisplayContent]? {
+=======
+    var articles : [DisplayContent]? {
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+        didSet {
+            articlesDidChange?((articles, metaData))
+        }
+    }
+    
+<<<<<<< HEAD
+    public var metaData : DisplayContentMetaData?
+    public var articlesDidChange: ((([DisplayContent]?, DisplayContentMetaData?)) -> Void)?
+=======
+    var metaData : DisplayContentMetaData?
+    var articlesDidChange: ((([DisplayContent]?, DisplayContentMetaData?)) -> Void)?
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+
+    // MARK: - Initialization
+    init(dataManager: DataManagerProtocol, model: [DisplayContent]? = nil) {
+        articles = model
+        self.dataManagerClass = dataManager
+        
+        // if another class changes the dataManager, we want to listen to the changes too!
+        dataManagerClass.articlesDidChange = { [weak self] result in
+            guard let self = self else {return}
+            self.articles = result.0
+            self.metaData = result.1
+        }
+    }
+}
+
+// MARK: - Public methods
+
+extension HomeViewModel {
+    
+<<<<<<< HEAD
+    public func retrieveImage(imgURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
+=======
+    func retrieveImage(imgURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+        dataManagerClass.fetchImageData(withURLString: imgURL) {
+            result in
+            switch result {
+            case .failure(let error):
+                DispatchQueue.main.async { completion(.failure(error)) }
+            case .success(let data):
+                DispatchQueue.main.async { completion(.success(data)) }
+            }
+        }
+    }
+    
+<<<<<<< HEAD
+    public func fetchMore(completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)? = nil)
+=======
+    func fetchMore(completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)? = nil)
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    {
+        dataManagerClass.fetchMore { result in
+            switch result {
+            case .failure: self.articles = nil; self.metaData = nil
+            case .success: break
+            }
+            if let completion = completion {
+                completion(result)
+            }
+        }
+    }
+    
+<<<<<<< HEAD
+    public func fetchArticle(refresh: Bool? = false, completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)? = nil)
+=======
+    func fetchArticle(refresh: Bool? = false, completion: ((_ result: Result<(content: [DisplayContent], metadata: DisplayContentMetaData, refresh: Bool), Error>) -> Void)? = nil)
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    {
+        dataManagerClass.fetchArticles(withAPI: .getContents(pageIndex: nil, pageSize: nil), refresh: refresh ?? false)
+        {
+            result in
+            switch result
+            {
+            case .failure: self.articles = nil; self.metaData = nil
+            case .success(let data): self.articles = data.content; self.metaData = data.metadata
+            }
+            if let completion = completion {
+                completion(result)
+            }
+        }
+    }
+    
+}
+
+// MARK: - Private methods
+
+extension HomeViewModel : HomeViewModelProtocol {}

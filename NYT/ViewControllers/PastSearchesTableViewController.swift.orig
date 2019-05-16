@@ -1,0 +1,233 @@
+//
+//  PastSearchTableViewController.swift
+//  NYT
+//
+//  Created by Steven Curtis on 07/05/2019.
+//  Copyright © 2019 Steven Curtis. All rights reserved.
+//
+
+import UIKit
+
+class PastSearchesTableViewController: UITableViewController {
+    
+    weak var searchBar: UISearchBar?
+    
+<<<<<<< HEAD
+    var viewModel : PastSearchModelProtocol?
+    var viewModelBuilder : PastSearchViewModelBuilderProtocol?
+=======
+    var viewModel : PastSearchModelProtocol = PastSearchViewModelBuilder.create()
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    var dimmingView: UIView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+<<<<<<< HEAD
+        viewModel?.searchesDidChange = { [weak self] result in
+            guard let self = self else {return}
+            self.tableView.reloadData()
+        }
+        viewModel?.fetchSearches()
+    }
+
+    init(vmb : PastSearchModelProtocol) {
+        viewModel = vmb
+        super.init(nibName: nil, bundle: nil)
+        setup(requiredInit: false)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup(requiredInit: Bool? = true) {
+        if requiredInit == true {
+            viewModelBuilder = PastSearchViewModelBuilder()
+            viewModel = viewModelBuilder?.create(nil)
+        }
+=======
+        
+        viewModel.searchesDidChange = { [weak self] result in
+            guard let self = self else {return}
+            self.tableView.reloadData()
+        }
+        viewModel.fetchSearches()
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    }
+    
+    func showLoading() {
+        let dimmingView = UIView(frame: view.frame)
+        dimmingView.backgroundColor = .darkGray
+        view.addSubview(dimmingView)
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        dimmingView.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: dimmingView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: dimmingView.centerYAnchor)
+            ])
+        activityIndicator.startAnimating()
+        self.dimmingView = dimmingView
+    }
+    
+    func removeLoading() {
+        dimmingView?.removeFromSuperview()
+<<<<<<< HEAD
+=======
+        self.view.isHidden = true
+
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    }
+    
+    /// process the error message for the UI
+    func processError(_ code: Int) -> (title: String, message: String){
+        var message = String()
+        var title = String()
+        
+        if (code == -1009) {
+            title = "Connection error"
+            message = "The Internet appears to be offline"
+        }
+        else {
+            title = "Error"
+            message = "An error has occured"
+        }
+        return (title, message)
+    }
+    
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+<<<<<<< HEAD
+        return viewModel?.previousSearches?.count ?? 0
+=======
+        return viewModel.previousSearches?.count ?? 0
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // searchcell is in the storyboard
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchcell", for: indexPath)
+<<<<<<< HEAD
+        cell.textLabel?.text = viewModel?.previousSearches?[indexPath.row]
+=======
+        cell.textLabel?.text = viewModel.previousSearches?[indexPath.row]
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+<<<<<<< HEAD
+        if let search = viewModel?.previousSearches?[indexPath.row] {
+            showLoading()
+            searchBar?.resignFirstResponder()
+            searchBar?.text = viewModel?.previousSearches![indexPath.row]
+            
+            // set the search term
+            viewModel?.addSearchTerm(search)
+            viewModel?.fetchArticle(searchTerms: search) {[weak self] result in
+                guard let self = self else {return}
+                
+                switch result {
+                case .success : break
+=======
+        if let search = viewModel.previousSearches?[indexPath.row] {
+            showLoading()
+            searchBar?.resignFirstResponder()
+            searchBar?.text = viewModel.previousSearches![indexPath.row]
+            
+            // set the search term
+            viewModel.addSearchTerm(search)
+            viewModel.fetchArticle(searchTerms: search) {[weak self] result in
+                guard let self = self else {return}
+                
+                switch result {
+                case .success :
+                    self.removeLoading()
+                    break
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+                case .failure(let error):
+                    let custerr = error as NSError
+                    let notifMess = self.processError(custerr.code)
+                    self.showNotification(title: notifMess.title, message: notifMess.message)
+<<<<<<< HEAD
+                }
+                
+                self.removeLoading()
+                self.tableView.deselectRow(at: indexPath, animated: false)
+                self.view.isHidden = true
+=======
+                    self.removeLoading()
+                }
+                self.tableView.deselectRow(at: indexPath, animated: false)
+
+                
+
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+            }
+        }
+    }
+    
+}
+
+extension PastSearchesTableViewController: UISearchControllerDelegate {}
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+extension PastSearchesTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        view.isHidden = false
+    }
+}
+
+extension PastSearchesTableViewController: UISearchBarDelegate {
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+<<<<<<< HEAD
+        viewModel?.fetchContents(refresh: nil, completion: nil)
+=======
+        viewModel.fetchContents(refresh: nil, completion: nil)
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+    }
+    
+    /// search bar search clicked when typed in
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        showLoading()
+        if let search = searchBar.text {
+<<<<<<< HEAD
+            viewModel?.addSearchTerm(search)
+            viewModel?.fetchArticle(searchTerms: search) {[weak self] result in
+                guard let self = self else {return}
+                switch result {
+                case .success: break
+=======
+            viewModel.addSearchTerm(search)
+            viewModel.fetchArticle(searchTerms: search) {[weak self] result in
+                guard let self = self else {return}
+                switch result {
+                case .success:
+                    self.removeLoading()
+                    break
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+                case .failure(let error):
+                    let custerr = error as NSError
+                    let notifMess = self.processError(custerr.code)
+                    self.showNotification(title: notifMess.title, message: notifMess.message)
+<<<<<<< HEAD
+                }
+                
+                self.removeLoading()
+                self.view.isHidden = true
+=======
+                    self.removeLoading()
+                }
+                
+>>>>>>> 84bd69e63053a8efcaa9dcbe074e9f674f569cc8
+            }
+        }
+        
+    }
+}
